@@ -1,0 +1,3 @@
+[submodule "PlaysDev-jenkins"]
+	path = PlaysDev-jenkins
+	url = https://github.com/AliShukurov/PlaysDev-jenkins.git
