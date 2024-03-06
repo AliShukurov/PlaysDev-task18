@@ -1,0 +1,28 @@
+version: "3"
+
+services:
+  nginx_container:
+    container_name: nginx
+    build:
+      context: .
+      dockerfile: Dockerfile_nginx
+    ports:
+      - "80:80"
+#      - "443:443"
+#    volumes:
+#      - /home/ubuntu/test2/letsencrypt/:/etc/letsencrypt/
+    depends_on:
+      - apache_container
+
+  apache_container:
+    container_name: apache
+    build:
+      context: .
+      dockerfile: Dockerfile_apache
+    ports:
+      - "8080:80"
+
+
+
+
+  

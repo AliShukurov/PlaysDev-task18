@@ -1,0 +1,27 @@
+FROM ubuntu:24.04
+
+RUN apt -y update && \
+    apt-get -y install nginx
+
+
+#RUN rm /etc/nginx/conf.d/default.conf
+
+RUN mkdir -p "/var/www/html/images" "/var/www/html/music"
+COPY images/* /var/www/html/images
+COPY music/LP.mp3 /var/www/html/music
+
+COPY nginx.conf /etc/nginx/nginx.conf
+COPY *.html /var/www/html/
+#COPY letsencrypt/ /etc/letsencrypt
+
+
+#RUN ln -s /etc/nginx/sites-available/docker-task.ddns.net /etc/nginx/sites-enabled && \
+#    groupadd -r user && \
+#    useradd -g user user && \
+#    chown -R user:user /etc/nginx && \
+#    chown -R user:user /var && \
+#    chown -R user:user /run
+
+#USER user
+
+CMD ["nginx", "-g", "daemon off;"]
