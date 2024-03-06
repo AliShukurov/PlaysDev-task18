@@ -10,7 +10,7 @@ pipeline {
         stage('Push Docker image') {
             steps {
                 script {
-                    docker.withRegistry(credentialsId: 'docker-hub-cred', url: 'https://index.docker.io/v1/') {
+                    docker.withRegistry('https://index.docker.io/v1/', 'docker-hub-cred') {
                         sh '''
                         docker push alishukurov/nginx-app-t15:latest && docker push alishukurov/apache-app-t15:latest
                         '''
