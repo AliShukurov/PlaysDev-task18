@@ -3,6 +3,7 @@ version: "3"
 services:
   nginx_container:
     container_name: nginx
+    image: alishukurov/nginx-app-t15:latest
     build:
       context: .
       dockerfile: Dockerfile_nginx
@@ -16,6 +17,7 @@ services:
 
   apache_container:
     container_name: apache
+    image: alishukurov/apache-app-t15:latest
     build:
       context: .
       dockerfile: Dockerfile_apache
@@ -24,5 +26,3 @@ services:
 
 
 
-
-  
