@@ -6,7 +6,7 @@ pipeline {
     stages {
         stage('Clone Git repository') {
             steps {
-                git 'https://github.com/AliShukurov/PlaysDev-task18.git' // замените на URL вашего репозитория Git
+                git branch: 'main', url: 'https://github.com/AliShukurov/PlaysDev-task18.git'
             }
         }
 
@@ -37,7 +37,7 @@ pipeline {
         stage('Run Ansible playbook') {
             steps {
                 script {
-                    withCredentials([sshUserPrivateKey(credentialsId: 'SSH-for-host3', keyFileVariable: 'SSH_KEY')]) {
+                    withCredentials([sshUserPrivateKey(credentialsId: 'my_ssh_key', keyFileVariable: 'SSH_KEY')]) {
                         sh 'ansible-playbook /etc/ansible/ansible_host3_playbook.yml' 
                     }
                 }
