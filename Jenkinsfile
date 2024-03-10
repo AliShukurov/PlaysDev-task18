@@ -38,7 +38,7 @@ pipeline {
             steps {
                 script {
                     withCredentials([sshUserPrivateKey(credentialsId: 'SSH-for-host3', keyFileVariable: 'SSH_KEY')]) {
-                        sh 'ansible-playbook /etc/ansible/ansible_host3_playbook.yml' 
+                        sh 'ansible-playbook -i inventory /etc/ansible/ansible_host3_playbook.yml' 
                     }
                 }
             }
