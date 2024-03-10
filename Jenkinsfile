@@ -37,7 +37,7 @@ pipeline {
         stage('Run Ansible playbook') {
             steps {
                 script {
-                    withCredentials([sshUserPrivateKey(credentialsId: 'my_ssh_key', keyFileVariable: 'SSH_KEY')]) {
+                    withCredentials([sshUserPrivateKey(credentialsId: 'SSH-for-host3', keyFileVariable: 'SSH_KEY')]) {
                         sh 'ansible-playbook /etc/ansible/ansible_host3_playbook.yml' 
                     }
                 }
